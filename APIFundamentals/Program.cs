@@ -10,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddProblemDetails();
+
 builder.Services.AddSingleton<ApplicationContext>();
 builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
 
@@ -20,6 +22,8 @@ if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
 	app.UseSwaggerUI();
+
+	app.Map("/", httpContext => Task.Run(() => httpContext.Response.Redirect("/swagger")));
 }
 
 app.UseHttpsRedirection();
