@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddProblemDetails();
+builder.Services.AddProblemDetails(); // Only Unsuccessful repsponses return problem details
 
 builder.Services.AddSingleton<ApplicationContext>();
 builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
