@@ -1,6 +1,5 @@
 ﻿using APIFundamentals.Repository;
 using Fundamentals.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using static System.Net.Mime.MediaTypeNames;
 
