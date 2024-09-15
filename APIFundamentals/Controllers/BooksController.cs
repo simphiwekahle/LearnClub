@@ -8,6 +8,7 @@ namespace APIFundamentals.Controllers;
 [Route("api/authors/{authorId:int}/[controller]")]
 [ApiController]
 [Produces(Application.Json)]
+[ApiExplorerSettings(GroupName = "OpenAPISpecificationForBooks")]
 public class BooksController(
 	IAuthorsRepository authorsRepository) : ControllerBase
 {

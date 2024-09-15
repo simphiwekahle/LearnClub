@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Fundamentals.Models</name>
+    </assembly>
+    <members>
+        <member name="P:Fundamentals.Models.AuthorModel.Id">
+            <summary>
+            Id of the author
+            </summary>
+        </member>
+        <member name="P:Fundamentals.Models.AuthorModel.FirstName">
+            <summary>
+            The author's first name
+            </summary>
+        </member>
+        <member name="P:Fundamentals.Models.AuthorModel.LastName">
+            <summary>
+            The author's last name
+            </summary>
+        </member>
+        <member name="P:Fundamentals.Models.AuthorModel.Books">
+            <summary>
+            The author's book list
+            </summary>
+        </member>
+    </members>
+</doc>

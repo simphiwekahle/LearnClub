@@ -1,5 +1,7 @@
+using APIFundamentals.Abstractions;
 using APIFundamentals.Data;
 using APIFundamentals.Repository;
+using Fundamentals.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +12,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(setup =>
 {
+	setup.SwaggerDoc("OpenAPISpecificationForAuthors", new()
+	{
+		Title = "API Fundamentals [Authors]",
+		Description = "Learning API basics",
+		Version = "v1"
+	});
 	
-	var xmlFile = $"{typeof(Program).Assembly.GetName().Name}.xml";
-	var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+	setup.SwaggerDoc("OpenAPISpecificationForBooks", new()
+	{
+		Title = "API Fundamentals [Books]",
+		Description = "Learning API basics",
+		Version = "v1"
+	});
 
-	setup.IncludeXmlComments(xmlFilePath);
+	setup.IncludeXmlCommentsFromAssembly<Program>();
+	setup.IncludeXmlCommentsFromAssembly<AuthorModel>();
 });
 
 builder.Services.AddProblemDetails(); // Only Unsuccessful repsponses return problem details
@@ -28,7 +41,16 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
-	app.UseSwaggerUI();
+	app.UseSwaggerUI(setup =>
+	{
+		setup.SwaggerEndpoint(
+			"/swagger/OpenAPISpecificationForAuthors/swagger.json",
+			"API Fundamentals [Authors]");
+		
+		setup.SwaggerEndpoint(
+			"/swagger/OpenAPISpecificationForBooks/swagger.json",
+			"API Fundamentals [Books]");
+	});
 
 	app.Map("/", httpContext => Task.Run(() => httpContext.Response.Redirect("/swagger")));
 }
