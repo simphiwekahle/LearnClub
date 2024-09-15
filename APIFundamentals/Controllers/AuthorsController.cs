@@ -11,6 +11,15 @@ namespace APIFundamentals.Controllers;
 public class AuthorsController(
 	IAuthorsRepository authorsRepository) : ControllerBase
 {
+	/// <summary>
+	/// Retrieves a list of authors
+	/// </summary>
+	/// <response code="200">
+	/// A list of authors
+	/// </response>
+	/// <returns>
+	/// A task of type ActionResult of list of type of AuthorModel
+	/// </returns>
 	[HttpGet]
 	public async Task<ActionResult<List<AuthorModel>>> RetrieveAllAsync()
 	{

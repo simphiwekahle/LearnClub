@@ -8,7 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setup =>
+{
+	
+	var xmlFile = $"{typeof(Program).Assembly.GetName().Name}.xml";
+	var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+	setup.IncludeXmlComments(xmlFilePath);
+});
 
 builder.Services.AddProblemDetails(); // Only Unsuccessful repsponses return problem details
 

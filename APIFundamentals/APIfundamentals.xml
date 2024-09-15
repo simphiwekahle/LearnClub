@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APIFundamentals</name>
+    </assembly>
+    <members>
+        <member name="M:APIFundamentals.Controllers.AuthorsController.RetrieveAllAsync">
+            <summary>
+            Retrieves a list of authors
+            </summary>
+            <response code="200">
+            A list of authors
+            </response>
+            <returns>
+            A task of type ActionResult of list of type of AuthorModel
+            </returns>
+        </member>
+    </members>
+</doc>
