@@ -1,7 +1,14 @@
+using MVCfundamentals.Configurations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var servicesOptions = builder.Configuration.GetSection("Services").Get<ServiceOptions>()
+					?? throw new InvalidOperationException("service options cannot be null");
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
